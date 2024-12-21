@@ -1,0 +1,83 @@
+﻿@{
+    ViewData["Title"] = "Chat";
+   Layout = "~/Views/Shared/Chat_Layout.cshtml";
+    var userName = Context.Session.GetString("Username");
+}
+
+@model MsgHist
+
+@{
+    var hist = (List<MsgHist>)ViewData["MyData"];
+}
+
+<h1>Chat</h1>
+@*
+<input id="messageInput" type="text" />
+<button id="sendButton">Send</button>
+
+<ul id="messagesList"></ul>
+
+@section Scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/3.1.18/signalr.min.js"></script>
+    <script src="~/js/chat.js"></script>
+}*@
+
+<body>
+    <h1>Welcome @userName</h1>
+    <div>
+        <form asp-action="Chat">
+            <input type="text" id="userInput" asp-for="Username" value="@userName" hidden />
+            <input type="text" id="messageInput" asp-for="Msg" placeholder="Enter your message" />
+            
+            <input type="submit" onclick="sendMessage()" value="Send"/>
+            
+        </form>
+    </div>
+    
+    
+
+    <ul style="text-align:center; list-style-position:inside" id="messagesList">
+        @foreach (var item in hist)
+        {
+            <li>@item.Username  -   @item.Msg</li>
+        }
+    </ul>
+    
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/3.1.18/signalr.min.js"></script>
+    <script>
+        const connection = new signalR.HubConnectionBuilder().withUrl("/ChatHub").build();
+        
+        connection.on("ReceiveMessage", function (user, message) {
+            const li = document.createElement("li");
+            li.textContent = `${user}: ${message}`;
+            document.getElementById("messagesList").appendChild(li);
+        });
+
+        connection.start().catch(function (err) {
+            return console.error(err.toString());
+        });
+
+        function sendMessage() {
+            const user = document.getElementById("userInput").value;
+            console.log(user);
+            const message = document.getElementById("messageInput").value;
+            connection.invoke("SendMessage", user, message).catch(function (err) {
+                return console.error(err.toString());
+
+                
+            });
+            
+            /*var formdata = new FormData();
+            
+            formdata.append("Username", user);
+            formdata.append("Msg", message);
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/Auth/SaveHist');
+            xhr.send(formdata);*/
+        
+        }
+    </script>
+
+</body>

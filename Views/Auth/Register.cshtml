@@ -1,0 +1,20 @@
+﻿@model User
+@{
+    Layout = "~/Views/Shared/Register_Layout.cshtml";
+}
+
+<form asp-action="Register" method="post">
+    <label>Username:</label>
+    <input id="Username" asp-for="Username" />
+    <label>Email:</label>
+    <input asp-for="Email" />
+    <label>Password:</label>
+    <input asp-for="PasswordHash" type="password" />
+    <label for="Usertype">Type:</label>
+    <select name="Usertype" id="Usertype" asp-for="UserType">
+    <option value="true">Student</option>
+    <option value="false">Facilitator</option>
+    </select>
+    <button type="submit">Register</button>
+    <a href="@Url.Action("Login", "Auth")">Back to Login</a>
+</form>

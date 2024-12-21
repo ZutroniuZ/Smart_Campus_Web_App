@@ -1,0 +1,13 @@
+﻿@model User
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/Index_Layout1.cshtml";
+    var userName = Context.Session.GetString("Username");
+}
+
+<div class="text-center">
+    <h1 class="display-4" style="text-align:center">Welcome @userName</h1>
+    
+</div>
+
+<a href="@Url.Action("Logout", "Auth")">Logout</a>

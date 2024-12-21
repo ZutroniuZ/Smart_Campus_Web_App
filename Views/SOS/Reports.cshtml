@@ -1,0 +1,12 @@
+﻿@model IEnumerable<IncidentReports>
+@{
+    Layout = "~/Views/Shared/Report_Layout.cshtml";
+}
+    <h1>Incident Reports</h1>
+
+    <ul>
+        @foreach (var report in Model)
+    {
+        <li>@report.Type: @report.Description (Location: @report.Location)</li>
+    }
+</ul>

@@ -1,0 +1,154 @@
+﻿:root {
+    --black: #0a3d5e; /* Dark aqua blue */
+    --hotmag: #00a3cc; /* Bright aqua blue */
+    --magenta: #33c1e8; /* Lighter aqua blue */
+    --aqua: #86fbfb; /* Keep original aqua */
+    --white: #e0f7fa; /* Soft white with a hint of aqua */
+    --font-size: 1.3rem;
+    --mono: "Oxygen mono", monospace;
+    --sans: Oxygen, sans-serif;
+}
+
+html {
+    box-sizing: border-box;
+    height: 100%;
+    *, *::before, *::after {
+    box-sizing: inherit;
+}
+
+body {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: var(--mono);
+    background-color: var(--black); /* Dark aqua blue background */
+    color: var(--white); /* Aqua white text */
+    font-size: var(--font-size);
+}
+
+h1 {
+    margin: 0;
+    font-family: var(--sans);
+    font-size: 2.3em;
+}
+
+a:hover {
+    color: var(--hotmag); /* Aqua blue hover */
+    text-decoration: none;
+}
+
+.gradient {
+    background: linear-gradient(90deg, rgba(0, 163, 204, 1) 0%, rgba(134, 251, 251, 1) 100%);
+    height: 2px;
+}
+
+nav {
+    font-size: 0.8em;
+    padding: 4rem 1rem;
+    padding-top: 90px;
+}
+
+    nav ul {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    nav li:first-child {
+        flex-basis: 100%;
+        text-align: center;
+    }
+
+    nav [class*="fa-"] {
+        font-size: 1.5em;
+        color: var(--aqua);
+    }
+
+    nav h1 [class*="fa-"] {
+        font-size: 1em;
+        color: var(--aqua);
+    }
+
+    nav a {
+        color: var(--white);
+        text-decoration: none;
+        display: block;
+    }
+
+        nav a:hover,
+        nav [class*="fa-"]:hover {
+            color: var(--magenta);
+        }
+
+.button {
+    background-color: var(--magenta);
+    color: var(--white);
+    padding: 0.5rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-family: var(--mono);
+}
+
+    .button:hover {
+        color: var(--white);
+        background-color: var(--hotmag);
+    }
+
+@media (min-width: 850px) {
+    nav {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+        nav li:first-child {
+            flex-basis: auto;
+            text-align: left;
+            margin-right: auto;
+        }
+}
+
+canvas {
+    position: fixed;
+    top: 0;
+    left: inherit;
+    right: inherit;
+    bottom: 0;
+    z-index: -1;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 400px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    border-radius: 5px;
+    background-color: var(--aqua);
+}
+
+input {
+    padding: 0.5rem;
+    font-size: var(--font-size);
+    border: none;
+    border-radius: 3px;
+}
+
+button {
+    padding: 0.5rem;
+    font-size: var(--font-size);
+    background-color: var(--magenta);
+    color: var(--white);
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+    button:hover {
+        background-color: var(--hotmag);
+    }

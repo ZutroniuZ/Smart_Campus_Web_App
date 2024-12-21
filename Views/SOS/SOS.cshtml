@@ -1,0 +1,14 @@
+﻿@model Smart_Campus_Web_App.Models.IncidentReports
+@{
+    Layout = "~/Views/Shared/SOS_Layout.cshtml";
+}
+<form asp-action="ReportIncident" method="post">
+    <label>Type:</label>
+    <input asp-for="Type" />
+    <label>Description</label>
+    <textarea asp-for="Description"></textarea>
+    <label>Location:</label>
+    <input asp-for="Location" />
+    <button type="submit">Report</button>
+
+</form>

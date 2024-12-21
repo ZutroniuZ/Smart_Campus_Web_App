@@ -1,0 +1,13 @@
+﻿@model User
+@{
+    Layout = "~/Views/Shared/Login_Layout.cshtml";
+}
+
+<form asp-action="Login" method="post">
+    <label>Email:</label>
+    <input asp-for="Email" />
+    <label>Password:</label>
+    <input asp-for="PasswordHash" type="password" />
+    <button type="submit">Login</button>
+    <a href="@Url.Action("Register", "Auth")">Sign Up</a>
+</form>
